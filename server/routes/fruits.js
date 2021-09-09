@@ -16,4 +16,8 @@ router.get('/', (req, res) => {
     })
 })
 
+// router.get('/items/:id', (req, res) => {
+//  return
+// })
+
 module.exports = router
