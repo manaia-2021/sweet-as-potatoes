@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchFruits } from '../actions'
+import garageSales from './garageSales'
 
 function App (props) {
   useEffect(() => {
@@ -13,9 +14,7 @@ function App (props) {
       <div className='app'>
         <h1>Fullstack Boilerplate - with Fruits!</h1>
         <ul>
-          {props.fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
+          <garageSales />
         </ul>
       </div>
     </>
