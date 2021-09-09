@@ -1,7 +1,12 @@
+
+
 // import React, { useEffect } from 'react'
 // import { connect } from 'react-redux'
 
 // import { fetchFruits } from '../actions'
+// import garageSales from './garageSales'
+
+
 import React, { Component } from 'react';
 import Items from './Items'
 import Filter from './Filter'
@@ -134,6 +139,7 @@ class App extends Component {
 
               </div>
         </div>
+
 
 
 
