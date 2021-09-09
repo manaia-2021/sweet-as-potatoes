@@ -1,0 +1,53 @@
+{
+    "sale" : {
+    "id" : 1,
+    "title" : "all items only $1",
+    "street" : "12 small lane",
+    "suburb" : "aranui",
+    "city" : "christchurch",
+    "description" : "description",
+    "date" : "2021-02-31",
+    "start_time" : "2021-02-31 16:00:00",
+    "end_time" : "2021-02-31 16:00:00"},
+    "items" : [{
+        "id" : "1",
+        "name" : "Retro couch",
+        "price" : "$100",
+        "quantity": "2",
+        "category_id": "23",
+        "sale_id":"2"
+    }, 
+    {
+        "id" : "2",
+        "name" : "Panasonic Microwave",
+        "price" : "$80",
+        "quantity": "2",
+        "category_id": "24",
+        "sale_id":"3" 
+    },
+    {
+        "id" : "3",
+        "name" : "Rice-Cooker",
+        "price" : "$20",
+        "quantity": "1",
+        "category_id": "25",
+        "sale_id":"4" 
+    },
+    {
+        "id" : "4",
+        "name" : "table",
+        "price" : "$10",
+        "quantity": "1",
+        "category_id": "26",
+        "sale_id":"2" 
+    },
+    {
+        "id" : "5",
+        "name" : "Wine-glasses",
+        "price" : "$10",
+        "quantity": "2",
+        "category_id": "23",
+        "sale_id":"2" 
+    }
+]
+  }
