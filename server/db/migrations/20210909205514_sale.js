@@ -9,7 +9,6 @@ exports.up = function (knex) {
     table.date('date')
     table.time('startTime')
     table.time('endTime')
-    table.string('imageUrl', 2000)
     table.string('password')
   })
 }
