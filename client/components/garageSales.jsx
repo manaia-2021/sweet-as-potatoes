@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 function garageSales (props) {
 
@@ -21,11 +21,11 @@ function garageSales (props) {
     </div>
   )
 }
+export default garageSales
+// function mapStateToProps (state) {
+//   return {
+//     words: state.words
+//   }
+// }
 
-function mapStateToProps (state) {
-  return {
-    words: state.words
-  }
-}
-
-export default connect(mapStateToProps)(Words)
+// export default connect(mapStateToProps)(Words)
