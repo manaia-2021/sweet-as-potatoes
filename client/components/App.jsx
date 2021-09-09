@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 // import { fetchFruits } from '../actions'
 import GarageSale from './GarageSale'
-import garageSales from './garageSales'
+import GarageSaleList from './GarageSaleList'
 
 
 
@@ -17,7 +17,7 @@ function App (props) {
   return (
     <>
     <GarageSale/>
-    <garageSales/>
+    <GarageSaleList/>
     </>
   )
 }

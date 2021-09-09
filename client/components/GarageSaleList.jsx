@@ -1,7 +1,7 @@
 import React from 'react'
 // import { connect } from 'react-redux'
 
-function garageSales (props) {
+function GarageSaleList (props) {
 
   return (
     <div className='list'>
@@ -21,7 +21,7 @@ function garageSales (props) {
     </div>
   )
 }
-export default garageSales
+export default GarageSaleList
 // function mapStateToProps (state) {
 //   return {
 //     words: state.words

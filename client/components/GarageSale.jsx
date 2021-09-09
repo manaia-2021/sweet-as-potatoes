@@ -11,7 +11,7 @@ class GarageSale extends Component {
     this.handleChangeSort= this.handleChangeSort.bind(this)
   }
   componentWillMount(){
-    // fetch("http://localhost:3000/").then(res => res.json())
+    // fetch("http://localhost:62200/").then(res => res.json())
     // .then(data => this.setState({
     //   items : data,
     //   filteredItems: data
