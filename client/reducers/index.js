@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux'
 
-import fruits from './fruits'
+import sales from './sales'
+import waiting from './waiting'
+import errorMessage from './errorMessage'
 
 export default combineReducers({
-  fruits
+  sales,
+  waiting,
+  errorMessage
 })
