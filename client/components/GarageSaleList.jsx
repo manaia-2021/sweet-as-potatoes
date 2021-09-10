@@ -13,7 +13,7 @@ function GarageSaleList ({ sales, dispatch, history }) {
     <div className='container list my-5'>
       <h1>Garage Sale</h1>
 
-      <Link to="/createsale" className="btn btn-primary">Add a Sale!</Link>
+      <Link to="/createsale" className="btn btn-primary my-2">Add a Sale!</Link>
       <br></br>
       <ul>
         {sales.map(sale => (
