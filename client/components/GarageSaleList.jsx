@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchSales } from '../actions/sales'
-import CreateSale from './CreateSale'
 
 function GarageSaleList ({ sales, dispatch, history }) {
   useEffect(() => {
@@ -15,7 +14,7 @@ function GarageSaleList ({ sales, dispatch, history }) {
 
       <Link to="/createsale" className="btn btn-primary my-2">Add a Sale!</Link>
       <br></br>
-      <ul>
+      <ul className="list-unstyled">
         {sales.map(sale => (
           <li key={sale.id}>
             <div className='listing'>
@@ -26,6 +25,7 @@ function GarageSaleList ({ sales, dispatch, history }) {
               <p className='description'>{sale.description}</p>
               <p className='date'><strong>Date:</strong> {sale.date}</p>
               <p className='time'><strong>Time:</strong> {sale.startTime} - {sale.endTime}</p>
+              <hr />
             </div>
           </li>
         ))}
