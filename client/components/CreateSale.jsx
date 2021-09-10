@@ -18,24 +18,25 @@ function AddWord (props) {
         <label>Title for your listing:
           <input type='text' name='title'></input>
         </label>
-        <label>
+        <label>House number:
           <input type='text' name='street'></input>
         </label>
-        <label>
+        <label>Suburb:
           <input type='text' name='suburb'></input>
         </label>
-        <label>
+        <label>City:
           <input type='text' name='city'></input>
         </label>
-        <label>
+        <label>Date:
           <input type='text' name='date'></input>
         </label>
-        <label>
+        <label>Start time:
           <input type='text' name='start_time'></input>
         </label>
-        <label>
+        <label>End time:
           <input type='text' name='end_time'></input>
         </label>
+        <button handleClick=''>Create garage sale</button>
       </form>
     </>
   )
