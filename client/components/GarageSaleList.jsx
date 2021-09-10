@@ -1,31 +1,35 @@
-import React from 'react'
-// import { connect } from 'react-redux'
-
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { fetchSales } from '../actions/sales'
 function GarageSaleList (props) {
+  useEffect(() => {
+    props.dispatch(fetchSales())
+  }, [])
 
   return (
     <div className='list'>
-    <ul>
-      {props.sales.map(sale => (
-        <li key={sale.id}>
-          <div className='listing'>
-          {sale.title} 
-          <div className='address'>{sale.street} {sale.suburb} {sale.city}</div> 
-          <div className='description'>{sale.description}</div> 
-          <div className='date'>{sale.date}</div> 
-          <div className='time'>{sale.start_time} {sale.end_time}</div>
-          </div> 
-        </li>
-      ))}
-    </ul>
+      <h1>Garage Sale</h1>
+      <ul>
+        {props.sales.map(sale => (
+          <li key={sale.id}>
+            <div className='listing'>
+              <h3>{sale.title}</h3>
+              <p className='address'>{sale.street} {sale.suburb} {sale.city}</p>
+              <p className='description'>{sale.description}</p>
+              <p className='date'>{sale.date}</p>
+              <p className='time'>{sale.start_time} {sale.end_time}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
-export default GarageSaleList
-// function mapStateToProps (state) {
-//   return {
-//     words: state.words
-//   }
-// }
 
-// export default connect(mapStateToProps)(Words)
+function mapStateToProps (state) {
+  return {
+    sales: state.sales
+  }
+}
+
+export default connect(mapStateToProps)(GarageSaleList)
