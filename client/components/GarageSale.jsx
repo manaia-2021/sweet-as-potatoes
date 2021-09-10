@@ -1,140 +1,61 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import Items from './Items'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Filter from './Filter'
+import { fetchSaleById } from '../actions/sale'
 
-class GarageSale extends Component {
-  constructor (props) {
-    super(props)
-    this.state = { items: [], filteredItems: [] }
-    this.handleChangeSort = this.handleChangeSort.bind(this)
+const GarageSale = (props) => {
+  const [items, setItems] = useState(null)
+  const [sort, setSort] = useState('')
+
+  useEffect(() => {
+    props.dispatch(fetchSaleById(1))
+  }, [])
+
+  useEffect(() => {
+    setItems(props.sale.items)
+  }, [props.sale])
+
+  function handleChangeSort (e) {
+    setSort(e.target.value)
+    const sorted = [...props.sale.items].sort((a, b) => (sort === 'lowest') ? (a.price < b.price ? 1 : -1) : (a.price > b.price ? 1 : -1))
+    setItems(sorted)
   }
 
-  componentWillMount () {
-    // fetch("http://localhost:3000/").then(res => res.json())
-    // .then(data => this.setState({
-    //   items : data,
-    //   filteredItems: data
-    // }))
-    this.setState({
-      items: [{
-        id: '1',
-        name: 'Retro couch',
-        price: '60',
-        quantity: '2',
-        category_id: '23',
-        sale_id: '2'
-      },
-      {
-        id: '2',
-        name: 'Panasonic Microwave',
-        price: '80',
-        quantity: '2',
-        category_id: '24',
-        sale_id: '3'
-      },
-      {
-        id: '3',
-        name: 'Rice-Cooker',
-        price: '20',
-        quantity: '1',
-        category_id: '25',
-        sale_id: '4'
-      },
-      {
-        id: '4',
-        name: 'table',
-        price: '10',
-        quantity: '1',
-        category_id: '26',
-        sale_id: '2'
-      },
-      {
-        id: '5',
-        name: 'Wine-glasses',
-        price: '10',
-        quantity: '2',
-        category_id: '23',
-        sale_id: '2'
-      }
-      ],
-      filteredItems: [{
-        id: '1',
-        name: 'Retro couch',
-        price: '60',
-        quantity: '2',
-        category_id: '23',
-        sale_id: '2'
-      },
-      {
-        id: '2',
-        name: 'Panasonic Microwave',
-        price: '80',
-        quantity: '2',
-        category_id: '24',
-        sale_id: '3'
-      },
-      {
-        id: '3',
-        name: 'Rice-Cooker',
-        price: '20',
-        quantity: '1',
-        category_id: '25',
-        sale_id: '4'
-      },
-      {
-        id: '4',
-        name: 'table',
-        price: '10',
-        quantity: '1',
-        category_id: '26',
-        sale_id: '2'
-      },
-      {
-        id: '5',
-        name: 'Wine-glasses',
-        price: '10',
-        quantity: '2',
-        category_id: '23',
-        sale_id: '2'
-      }
-      ]
-    })
-  }
+  return (
+    <div className="container my-5">
+      <Link to="/" className="btn btn-primary">Back to Home</Link>
+      {props.sale.sale && (
+        <>
+          <h1>{props.sale.sale.title}</h1>
+          <p>{props.sale.sale.description}</p>
+          <small><em>Address:</em>{props.sale.sale.street} {props.sale.sale.suburb} {props.sale.sale.city}</small>
+        </>
+      )}
+      <p>{props.sale.description}</p>
 
-  handleChangeSort (e) {
-    this.setState({ sort: e.target.value })
-    this.listItems()
-  }
-
-  listItems () {
-    this.setState(state => {
-      if (state.sort !== '') {
-        state.items.sort((a, b) => (state.sort === 'lowest') ? (a.price > b.price ? 1 : -1) : (a.price < b.price ? 1 : -1))
-      } else {
-        state.items.sort((a, b) => (a.id < b.id ? 1 : -1))
-      }
-      return { filteredItems: state.items }
-    })
-  }
-
-  render () {
-    return (
-      <div className="container">
-        <h1> List Of garage Sales</h1>
+      <div className="mt-5">
+        <h2> List Of Items on sale</h2>
         <hr/>
         <div className="row">
           <div className="col-md-8">
-            <Filter sort = {this.state.sort} handleChangeSort={this.handleChangeSort} />
+            <Filter sort={sort} handleChangeSort={handleChangeSort} />
             <hr/>
-            <Items items= {this.state.filteredItems}/>
+            {items && <Items items= {items}/>}
           </div>
           <div className="col-md-4">
 
           </div>
         </div>
-
       </div>
-    )
-  }
+
+    </div>
+  )
 }
-export default GarageSale
+
+const mapStateToProps = (state) => {
+  return { sale: state.sale }
+}
+
+export default connect(mapStateToProps)(GarageSale)

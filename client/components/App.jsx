@@ -1,33 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route } from 'react-router-dom'
-import { connect } from 'react-redux'
-import GarageSaleList from './GarageSaleList'
+import CreateSale from './CreateSale'
 import GarageSale from './GarageSale'
+import GarageSaleList from './GarageSaleList'
 
 function App () {
   return (
     <div className='app'>
       <Route exact path='/' component={GarageSaleList} />
-      <Route exact path='/Garagesale' component={GarageSale} />
-      {/* <Route path='/' component={Header} /> */}
-      {/* <Route path='/' component={ErrorMessage} /> */}
-      {/* <Route exact path='/' render={({ history }) => {
-        return <GarageSaleList history={history}> */}
-      {/* {/* <WaitIndicator /> */}
-      {/* </GarageSaleList> */}
-      {/* }} /> */} */}
-      {/* <Route path='/cart' render={({ history }) => {
-        return <Cart history={history}>
-          <WaitIndicator />
-        </Cart>
-      }} />
-      <Route path='/orders' render={() => {
-        return <OrderList>
-          <WaitIndicator />
-        </OrderList>
-      }} /> */}
+      <Route path='/sale/:id' component={GarageSale} />
+      <Route path='/createsale' component={CreateSale} />
     </div>
   )
 }
-
 export default App

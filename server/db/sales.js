@@ -10,8 +10,7 @@ function getAllSales (db = connection) {
     'description',
     'date',
     'startTime',
-    'endTime',
-    'imageUrl'
+    'endTime'
   )
 }
 
@@ -22,7 +21,7 @@ function getAllSales (db = connection) {
 async function getSaleById (id, db = connection) {
   const items = await db('item')
     .join('category', 'category.id', 'item.category_id')
-    .select('item.name as itemName', 'category.id as categoryId', 'category.name as category', 'price', 'quantity')
+    .select('item.id as id', 'item.name as itemName', 'category.id as categoryId', 'category.name as category', 'price', 'quantity')
     .where('sale_id', id)
 
   const sale = await db('sale')
@@ -34,8 +33,7 @@ async function getSaleById (id, db = connection) {
       'description',
       'date',
       'startTime',
-      'endTime',
-      'imageUrl').where('id', id).first()
+      'endTime').where('id', id).first()
 
   return { sale, items }
 }

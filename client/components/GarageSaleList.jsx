@@ -1,29 +1,32 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchSales } from '../actions/sales'
-import GarageSale from './GarageSale'
+import CreateSale from './CreateSale'
 
-function GarageSaleList (props) {
+function GarageSaleList ({ sales, dispatch, history }) {
   useEffect(() => {
-    props.dispatch(fetchSales())
+    dispatch(fetchSales())
   }, [])
 
   return (
-    <div className='container list'>
+    <div className='container list my-5'>
       <h1>Garage Sale</h1>
+
+      <Link to="/createsale" className="btn btn-primary">Add a Sale!</Link>
+      <br></br>
       <ul>
-        {props.sales.map(sale => (
+        {sales.map(sale => (
           <li key={sale.id}>
-            <Link to = '{GarageSale}'>
-              <div className='listing'>
+            <div className='listing'>
+              <Link to={`/sale/${sale.id}`}>
                 <h3>{sale.title}</h3>
-                <p className='address'>{sale.street}, {sale.suburb}, {sale.city}</p>
-                <p className='description'>{sale.description}</p>
-                <p className='date'>{sale.date}</p>
-                <p className='time'>{sale.start_time} {sale.end_time}</p>
-              </div>
-            </Link>
+              </Link>
+              <p className='address'>{sale.street}, {sale.suburb}, {sale.city}</p>
+              <p className='description'>{sale.description}</p>
+              <p className='date'><strong>Date:</strong> {sale.date}</p>
+              <p className='time'><strong>Time:</strong> {sale.startTime} - {sale.endTime}</p>
+            </div>
           </li>
         ))}
       </ul>

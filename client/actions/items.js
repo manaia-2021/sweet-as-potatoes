@@ -1,25 +1,24 @@
-import { getSales } from '../apis/sales'
+import { getItems } from '../apis/items'
 import { showError } from './error'
 
-export const FETCH_SALES_PENDING = 'FETCH_SALES_PENDING'
-export const FETCH_SALES_SUCCESS = 'FETCH_SALES_SUCCESS'
+export const FETCH_ITEMS_PENDING = 'FETCH_ITEMS_PENDING'
+export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS'
 
-export function fetchSalesPending () {
+export function fetchItemsPending () {
   return {
-    type: FETCH_SALES_PENDING
+    type: FETCH_ITEMS_PENDING
   }
 }
 
 export function fetchSalesSuccess (sales) {
   return {
-    type: FETCH_SALES_SUCCESS,
-    sales: sales
+    type: FETCH_ITEMS_SUCCESS,
+    items: items
   }
 }
 
 export function fetchSales () {
   return (dispatch) => {
-    dispatch(fetchSalesPending)
     return getSales()
       .then((sales) => {
         dispatch(fetchSalesSuccess(sales))

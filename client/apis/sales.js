@@ -13,3 +13,9 @@ export function getSaleById (id) {
     return res.body
   })
 }
+
+export function addNewSale (saleInfo) {
+  return request.post(rootUrl + '/sales').send({ saleInfo }).then((res) => {
+    return res.body
+  })
+}
