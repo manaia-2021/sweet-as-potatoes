@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchSales } from '../actions/sales'
 
-function GarageSaleList ({sales,dispatch}) {
+function GarageSaleList ({ sales, dispatch }) {
   useEffect(() => {
     dispatch(fetchSales())
   }, [])
@@ -13,7 +13,7 @@ function GarageSaleList ({sales,dispatch}) {
       <ul>
         {sales.map(sale => (
           <li key={sale.id}>
-            
+
             <div className='listing'>
               <h3>{sale.title}</h3>
               <p className='address'>{sale.street} {sale.suburb} {sale.city}</p>
@@ -21,7 +21,7 @@ function GarageSaleList ({sales,dispatch}) {
               <p className='date'>{sale.date}</p>
               <p className='time'>{sale.start_time} {sale.end_time}</p>
             </div>
-            
+
           </li>
         ))}
       </ul>
